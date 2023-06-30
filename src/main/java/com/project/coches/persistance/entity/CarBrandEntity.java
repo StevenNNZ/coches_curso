@@ -12,7 +12,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "marca_coche")
 
-public class MarcaCocheEntity {
+public class CarBrandEntity {
 
     /**
      * Id de la marca
