@@ -16,7 +16,6 @@ public interface ICarBrandMapper {
 
     //En este caso poner el mapping es redundante, ya que en ambos casos tienen el mismo nombre
     //Si fueran diferentes, podríamos omitir el mapping
-
     /**
      * Convierte una entidad a un pojo de marca coche
      * @param marcaEntity Entidad a convertir

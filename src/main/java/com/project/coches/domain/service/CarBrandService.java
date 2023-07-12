@@ -5,6 +5,7 @@ import com.project.coches.domain.repository.ICarBrandRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -51,17 +52,32 @@ public class CarBrandService implements ICarBrandService{
     }
 
     /**
+     *Actualiza una marca coche
+     * @param updateBrandCard Marca coche a actualizar
+     * @return Optional con marca coche actualizada
+     */
+    @Override
+    public Optional<CarBrandPojo> update(CarBrandPojo updateBrandCard) {
+        if(iCarBrandRepository.getCarBrand(updateBrandCard.getId()).isEmpty()){
+            return Optional.empty();
+        }
+
+        return Optional.of(iCarBrandRepository.save(updateBrandCard));
+    }
+
+    /**
      * Elimina una marca coche dado su id
      * @param idBrandCard id del mara coche a eliminar
      * @return true si se eliminó, falso de lo contrario
      */
     @Override
     public boolean delete(Integer idBrandCard) {
-        try{
-            iCarBrandRepository.delete(idBrandCard);
-            return true;
-        }catch (Exception e){
-        return false;
+
+        if(iCarBrandRepository.getCarBrand(idBrandCard).isEmpty()){
+            return false;
         }
+
+        iCarBrandRepository.delete(idBrandCard);
+        return true;
     }
 }
