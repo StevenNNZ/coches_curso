@@ -11,7 +11,7 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping(path = "/marcas-coches")
+@RequestMapping(path = "/car-brand")
 public class CarBrandController {
 
     /**
