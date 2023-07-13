@@ -1,11 +1,10 @@
 package com.project.coches.domain.service;
 
-import com.project.coches.domain.pojo.CarBrandPojo;
+import com.project.coches.domain.dto.CarBrandDto;
 import com.project.coches.domain.repository.ICarBrandRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,7 +26,7 @@ public class CarBrandService implements ICarBrandService{
      * @return Lista con marcas de coches
      */
     @Override
-    public List<CarBrandPojo> getAll() {
+    public List<CarBrandDto> getAll() {
         return iCarBrandRepository.getAll();
     }
 
@@ -37,7 +36,7 @@ public class CarBrandService implements ICarBrandService{
      * @return Optional del marca coche encontrado
      */
     @Override
-    public Optional<CarBrandPojo> getCarBrand(Integer id) {
+    public Optional<CarBrandDto> getCarBrand(Integer id) {
         return iCarBrandRepository.getCarBrand(id);
     }
 
@@ -47,7 +46,7 @@ public class CarBrandService implements ICarBrandService{
      * @return Marca coche guardada
      */
     @Override
-    public CarBrandPojo save(CarBrandPojo newBrandCard) {
+    public CarBrandDto save(CarBrandDto newBrandCard) {
         return iCarBrandRepository.save(newBrandCard);
     }
 
@@ -57,7 +56,7 @@ public class CarBrandService implements ICarBrandService{
      * @return Optional con marca coche actualizada
      */
     @Override
-    public Optional<CarBrandPojo> update(CarBrandPojo updateBrandCard) {
+    public Optional<CarBrandDto> update(CarBrandDto updateBrandCard) {
         if(iCarBrandRepository.getCarBrand(updateBrandCard.getId()).isEmpty()){
             return Optional.empty();
         }
