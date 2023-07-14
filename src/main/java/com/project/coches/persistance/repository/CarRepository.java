@@ -19,31 +19,39 @@ public class CarRepository implements ICarRepository {
 
     @Override
     public List<CarDto> getAll() {
-        return null;
+        return iCarMapper.toCarsDto(iCarCrudRepository.findAll());
+
     }
 
     @Override
     public Optional<CarDto> getCar(Integer idCar) {
-        return Optional.empty();
+        return iCarCrudRepository.findById(idCar)
+                .map(iCarMapper::toCarDto);
     }
 
     @Override
     public List<CarDto> getByIdBrandCar(Integer idBrandCar) {
-        return null;
+        return iCarMapper.toCarsDto(iCarCrudRepository.findAllByBrandCarId(idBrandCar));
     }
 
     @Override
     public List<CarDto> getCarsByPriceLessThan(Double price) {
-        return null;
+        return iCarMapper.toCarsDto(iCarCrudRepository.findAllByPriceLessThanEqualOrderByPriceAsc(price));
+
     }
 
     @Override
     public CarDto save(CarDto newCar) {
-        return null;
+        return iCarMapper.toCarDto(
+                iCarCrudRepository.save(
+                        iCarMapper.toCarEntity(newCar)
+                )
+        );
     }
 
     @Override
     public void delete(Integer idCar) {
+        iCarCrudRepository.deleteById(idCar);
 
     }
 }

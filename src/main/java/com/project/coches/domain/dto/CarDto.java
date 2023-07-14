@@ -1,9 +1,14 @@
 package com.project.coches.domain.dto;
 
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * Dto que modela un carro
  */
+
+@Getter @Setter
 public class CarDto {
 
     private Integer codeCar;
@@ -22,6 +27,4 @@ public class CarDto {
     private String steering;
     private String category;
     private String imagePath;
-
-
 }
